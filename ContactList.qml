@@ -4,11 +4,13 @@ import QtQuick.Layouts 1.15
 ListView{
     id: lv_contactList
     AlphabetBar{
-        anchors.margins: 10
+        anchors.margins: Style.mediumOffset
         height: parent.height-10
         width: 15
         anchors.right: parent.right
     }
+    section.criteria: ViewSection.FirstCharacter
+    section.property: "name"
 
     property var delegateHeight: 50
     property var chunkSize: 5

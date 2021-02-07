@@ -5,6 +5,7 @@ ColumnLayout{
     Repeater{
         id: alphabetJump
         Rectangle{
+            id: letter
             height: parent.width
             width: parent.width
             color: "transparent"
@@ -13,9 +14,12 @@ ColumnLayout{
                 text: qsTr(modelData.symbol)
                 color: Style.textColor
                 font.bold: modelData.available
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
             }
             MouseArea{
                 anchors.fill: parent
+                hoverEnabled: true
                 onClicked: {
                     contactListModel.clear()
                     var countVisibleItems = lv_contactList.height/lv_contactList.delegateHeight
@@ -23,6 +27,10 @@ ColumnLayout{
                     contactListModel.append(letterChunk)
                     if(letterChunk.length===countVisibleItems + lv_contactList.chunkSize)
                         lv_contactList.positionViewAtIndex(lv_contactList.chunkSize, ListView.Beginning )
+                }
+
+                onContainsMouseChanged: {
+                    letter.color =  containsMouse ? Style.enteredColor : "transparent"
                 }
             }
         }

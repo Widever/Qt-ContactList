@@ -12,7 +12,7 @@ Rectangle{
         TextField{
             id: tf_filter
             width: 100
-            Layout.leftMargin: 10
+            Layout.leftMargin: Style.mediumOffset
             font.pixelSize: 18
             placeholderText: qsTr("Search")
             onTextChanged: {
@@ -36,9 +36,16 @@ Rectangle{
         Rectangle{
             height: optionsPanel.height -10
             width: optionsPanel.height -10
-            Layout.alignment: Qt.AlignRight
-            Layout.margins: 5
-            color: onlyFavorites ? "gold" : "lightgrey"
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+            Layout.rightMargin: Style.mediumOffset
+            color: "transparent"
+            border.color: Style.borderColor
+            border.width: 1
+            StarShape{
+                anchors.fill: parent
+                starColor: onlyFavorites ? Style.selectColor : Style.unselectColor
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked: {

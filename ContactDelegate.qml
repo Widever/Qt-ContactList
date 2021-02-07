@@ -16,10 +16,11 @@ Rectangle{
             horizontalAlignment: Text.AlignHCenter
         }
         Rectangle{
-            anchors.leftMargin: 10
+            anchors.leftMargin: Style.mediumOffset
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            height: delegateRoot.height
-            width: delegateRoot.height
+            height: delegateRoot.height-5
+            width: delegateRoot.height-5
             color: Qt.rgba(Math.random(),Math.random(),Math.random(),1)
             radius: width*0.5
             Image {
@@ -29,7 +30,7 @@ Rectangle{
         }
 
         StarShape{
-            anchors.rightMargin: 25
+            anchors.rightMargin: Style.bigSpacing
             anchors.right: parent.right
             height: delegateRoot.height
             width: delegateRoot.height
