@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>contact_icon.png</file>
+        <file>contact_icon.svg</file>
     </qresource>
 </RCC>

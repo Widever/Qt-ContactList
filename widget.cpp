@@ -16,6 +16,8 @@ Widget::Widget(QWidget *parent)
     auto contactListProvider = new ContactListProvider(this);
     context->setContextProperty("contactListProvider", contactListProvider);
 
+
+    qmlRegisterSingletonType(QUrl("qrc:/Style.qml"), "Style", 1, 0, "Style");
     ui->quickWidget->setSource(QUrl("qrc:/main.qml"));
 
 }

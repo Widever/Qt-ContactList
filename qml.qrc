@@ -2,7 +2,10 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>StarShape.qml</file>
-        <file>maintmp.qml</file>
         <file>Style.qml</file>
+        <file>OptionsPanel.qml</file>
+        <file>ContactList.qml</file>
+        <file>ContactDelegate.qml</file>
+        <file>AlphabetBar.qml</file>
     </qresource>
 </RCC>
