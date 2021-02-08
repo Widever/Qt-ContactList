@@ -9,8 +9,6 @@ ListView{
         width: 15
         anchors.right: parent.right
     }
-    section.criteria: ViewSection.FirstCharacter
-    section.property: "name"
 
     property var delegateHeight: 50
     property var chunkSize: 5

@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>contact_icon.svg</file>
+        <file>call_icon.svg</file>
+        <file>list_icon.svg</file>
+        <file>grid_icon.svg</file>
     </qresource>
 </RCC>

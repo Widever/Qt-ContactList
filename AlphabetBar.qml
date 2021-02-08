@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.15
 
 ColumnLayout{
+    visible: !filtered && !onlyFavorites
     Repeater{
         id: alphabetJump
         Rectangle{
@@ -21,12 +22,12 @@ ColumnLayout{
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: {
+                    if(!modelData.available) return
                     contactListModel.clear()
-                    var countVisibleItems = lv_contactList.height/lv_contactList.delegateHeight
+                    var countVisibleItems = lv_contactList.height/lv_contactList.delegateHeight+1
                     var letterChunk = contactListProvider.getDataChunk(modelData.firstContactIndex-lv_contactList.chunkSize, countVisibleItems + lv_contactList.chunkSize)
                     contactListModel.append(letterChunk)
-                    if(letterChunk.length===countVisibleItems + lv_contactList.chunkSize)
-                        lv_contactList.positionViewAtIndex(lv_contactList.chunkSize, ListView.Beginning )
+                    lv_contactList.positionViewAtIndex(lv_contactList.chunkSize, ListView.Beginning )
                 }
 
                 onContainsMouseChanged: {

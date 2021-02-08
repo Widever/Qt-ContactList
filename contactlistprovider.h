@@ -29,7 +29,8 @@ public slots:
     QVariantList getDataChunk(int startIndex, int size);
     QVariantList getOnlyFavorites();
     QVariantList getAvailableLetters();
-    QVariantList getFilteredData(QString filter);
+    QVariantList getFilteredData(QString filter, bool onlyFavorites);
+    void call(int index);
 
 private:
     QVariantList m_contactData;

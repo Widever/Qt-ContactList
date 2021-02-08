@@ -55,7 +55,17 @@ QVariantList ContactListProvider::getOnlyFavorites()
 
 QVariantList ContactListProvider::getAvailableLetters()
 {
-   // std::sort(m_contactData.begin(), m_contactData.end());
+    std::sort(m_contactData.begin(), m_contactData.end(),
+        [](const QVariant & a, const QVariant & b) -> bool
+    {
+        return a.toMap()["contactName"].toString() < b.toMap()["contactName"].toString();
+    });
+
+    for(int i =0; i<m_contactData.size();i++){
+        QVariantMap contact = m_contactData[i].toMap();
+        contact["index_"] = i;
+        m_contactData[i] = contact;
+    }
     QMap<QChar, QVariantMap> availableLettersProto;
     for(auto letterChar: alphabet){
         QVariantMap letter;
@@ -83,13 +93,19 @@ QVariantList ContactListProvider::getAvailableLetters()
     return availableLetters;
 }
 
-QVariantList ContactListProvider::getFilteredData(QString filter)
+QVariantList ContactListProvider::getFilteredData(QString filter, bool onlyFavorites)
 {
     QVariantList filteredData = {};
     for(auto contact: m_contactData){
-        if(contact.toMap()["contactName"].toString().indexOf(filter)!=-1){
+        if(contact.toMap()["contactName"].toString().indexOf(filter)!=-1 && (onlyFavorites ? contact.toMap()["favorite"].toBool() : true)){
             filteredData.append(contact);
         }
     }
     return filteredData;
 }
+
+void ContactListProvider::call(int index)
+{
+    qDebug()<<"Call to contact #"+QString::number(index);
+}
+

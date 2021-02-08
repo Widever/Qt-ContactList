@@ -6,6 +6,14 @@ Rectangle{
         property var absoluteIndex: index_
         width: lv_contactList.width
         color: Style.primaryVariantColor
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                contactListProvider.call(index_)
+                callPopup.contactName = contactName
+                callPopup.open()
+            }
+        }
         Text {
             anchors.fill: parent
             text: qsTr(contactName)
@@ -51,5 +59,6 @@ Rectangle{
                 }
             }
         }
+
 
     }

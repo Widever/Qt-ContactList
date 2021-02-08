@@ -25,5 +25,5 @@ QtObject {
 
     readonly property int bigSpacing: 25
     readonly property int mediumSpacing: 10
-    readonly property int smallSpacing: 7
+    readonly property int smallSpacing: 5
 }
